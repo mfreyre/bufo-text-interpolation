@@ -1,5 +1,7 @@
 import spacy
 import re
+from utils.file_readers import get_phrases_from_file
+from utils.phrasers import get_emoji_phrase_dict
 # nlp = spacy.load("en_core_web_lg")
 nlp = spacy.load("en_core_web_md")
 
@@ -25,3 +27,8 @@ split_text = re.split(r'[,.]+', text)
 split_text = [s.strip() for s in split_text if s.strip()]
 
 print(split_text)
+
+
+
+get_emoji_phrase_dict()
+

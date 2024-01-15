@@ -1,5 +1,6 @@
 import nltk
 from nltk.corpus import wordnet as wn
+from utils.file_readers import get_phrases_from_file
 #nltk.download('wordnet')
 
 def generate_related_phrases(phrase):
@@ -21,9 +22,7 @@ def generate_related_phrases(phrase):
 
     return related_phrases
 
-
-with open('emoji-names.txt', 'r') as file:
-    phrases = [line.strip() for line in file]
+phrases = get_phrases_from_file('emoji-names.txt')
 
 with open('emojis-dict.txt', 'w') as file:
     for phrase in phrases:
