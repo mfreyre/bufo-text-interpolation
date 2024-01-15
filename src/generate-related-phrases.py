@@ -21,7 +21,7 @@ def generate_related_phrases(phrase):
 
     return related_phrases
 
-# Example usage
+
 with open('emoji-names.txt', 'r') as file:
     phrases = [line.strip() for line in file]
 

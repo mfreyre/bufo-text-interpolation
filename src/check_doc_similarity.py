@@ -1,4 +1,5 @@
 import spacy
+import re
 # nlp = spacy.load("en_core_web_lg")
 nlp = spacy.load("en_core_web_md")
 
@@ -13,3 +14,14 @@ print(doc1.similarity(doc3))
 print(doc2.similarity(doc3)) 
 
 
+text = "my cat, who is named toast, is very silly."
+
+# TODO: break into phrases around clauses and sentence ends
+# MVP: break on punctuation marks . and ,
+
+split_text = re.split(r'[,.]+', text)
+
+# The split function leaves trailing spaces, which we can remove with strip()
+split_text = [s.strip() for s in split_text if s.strip()]
+
+print(split_text)
