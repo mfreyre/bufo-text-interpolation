@@ -1,4 +1,4 @@
-from file_readers import get_phrases_from_file
+from utils.file_readers import get_phrases_from_file
 
 def get_emoji_phrase_dict():
     emoji_names = get_phrases_from_file('emoji-names.txt')
