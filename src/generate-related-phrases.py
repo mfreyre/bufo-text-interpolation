@@ -27,5 +27,7 @@ with open('emoji-names.txt', 'r') as file:
 
 with open('emojis-dict.txt', 'w') as file:
     for phrase in phrases:
-        related_phrases = generate_related_phrases(phrase)
+        test_phrase = phrase.replace('bufo', '').replace('-', ' ').strip()
+        related_phrases = generate_related_phrases(test_phrase)
+        print(f"testing {test_phrase} and received results {related_phrases}")
         file.write(f"{phrase} : {related_phrases}\n")
