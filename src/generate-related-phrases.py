@@ -30,4 +30,14 @@ with open('emojis-dict.txt', 'w') as file:
         test_phrase = phrase.replace('bufo', '').replace('-', ' ').strip()
         related_phrases = generate_related_phrases(test_phrase)
         print(f"testing {test_phrase} and received results {related_phrases}")
+
+        if not related_phrases:
+            test_phrase = test_phrase.split(" ")[0]
+            print(f"empty results, testing {test_phrase} and received results {related_phrases}")
         file.write(f"{phrase} : {related_phrases}\n")
+
+
+# TODO :
+# offer_syns = wn.synonyms('offers')
+#  offer_syns_flat = [item for row in offer_syns for item in row]
+# remove from offer syns all references ot "offer"
