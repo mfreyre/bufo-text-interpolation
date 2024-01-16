@@ -6,9 +6,8 @@ from collections import defaultdict
 
 nlp = spacy.load("en_core_web_md")
 filename = 'emoji_sample_sm.txt'
-user_phrase_docs = get_user_phrases(nlp)
 bufo_emoji_docs = get_bufo_phrases(nlp, filename)
-
+user_phrase_docs = get_user_phrases(nlp)
 
 N = 3
 
@@ -34,7 +33,7 @@ def find_top_similarities(similarity_dict, top_n=3):
 
 similarity_dict = generate_similarity_dict()
 top_similarities = find_top_similarities(similarity_dict)
-print("*******\n")
+print("\n*******\n")
 for phrase, bufos in top_similarities.items():
     print(f"For {phrase}, we recommend bufos:")
     for bufo in bufos:

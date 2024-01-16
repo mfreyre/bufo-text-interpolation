@@ -12,11 +12,12 @@ def get_emoji_phrase_dict():
 
 
 def get_bufo_phrases(nlp, filename):
-    phrases = get_phrases_from_file(filename)
+    emoji_names = get_phrases_from_file(filename)
+    names_to_phrases = {p : p.replace('bufo','').replace('-', ' ') for p in emoji_names}
     bufo_emoji_docs = {}
-    for phrase in phrases:
+    for emoji_name, phrase in names_to_phrases.items():
         doc = nlp(phrase)
-        bufo_emoji_docs[phrase] = doc
+        bufo_emoji_docs[emoji_name] = doc
     return bufo_emoji_docs
 
 def get_user_phrases(nlp):
