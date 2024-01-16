@@ -8,7 +8,6 @@ def get_emoji_phrase_dict():
         phrase = e.replace('bufo', '').replace('-', ' ').strip()
         phrase_to_emoji_name[phrase] = e
 
-    print(phrase_to_emoji_name)
 
 
 def get_bufo_phrases(nlp, filename):

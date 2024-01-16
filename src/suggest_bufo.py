@@ -15,8 +15,7 @@ def generate_similarity_dict(user_phrase_docs, bufo_emoji_docs):
         for bufo_phrase, bufo_doc in bufo_emoji_docs.items():
             similarity = user_phrase_doc.similarity(bufo_doc)
             similarity_dict[user_phrase_doc].append([bufo_phrase, similarity])
-
-    print(similarity_dict)
+            
     return similarity_dict
 
 def find_top_similarities(similarity_dict, top_n=3):
