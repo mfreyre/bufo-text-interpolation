@@ -5,7 +5,7 @@ from utils.phrasers import get_bufo_phrases, get_user_phrases
 from collections import defaultdict
 
 nlp = spacy.load("en_core_web_md")
-filename = 'emoji_sample_sm.txt'
+filename = 'emoji-names.txt'
 bufo_emoji_docs = get_bufo_phrases(nlp, filename)
 user_phrase_docs = get_user_phrases(nlp)
 
