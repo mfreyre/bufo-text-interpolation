@@ -1,22 +1,42 @@
 import spacy
 from utils.file_readers import get_phrases_from_file
+from utils.phrasers import get_bufo_phrases, get_user_phrases
+
+from collections import defaultdict
 
 nlp = spacy.load("en_core_web_md")
-
-phrases = get_phrases_from_file('emoji_sample_sm.txt')
-print(phrases)
-
-bufo_emoji_docs = {}
-for phrase in phrases:
-    doc = nlp(phrase)
-    bufo_emoji_docs[phrase] = doc
+filename = 'emoji_sample_sm.txt'
+user_phrase_docs = get_user_phrases(nlp)
+bufo_emoji_docs = get_bufo_phrases(nlp, filename)
 
 
-user_phrases = ['I am so annoyed', 'I am shocked'];
-user_phrase_docs = [nlp(phrase) for phrase in user_phrases]
-for phrase in user_phrase_docs:
-    for bufo_phrase, doc in bufo_emoji_docs:
-        print(f"Comparing {phrase} to {bufo_phrase}")
-        print(phrase.similarity(doc))
+N = 3
 
+# Using defaultdict to store a list of similarity values for each bufo_phrase
+def generate_similarity_dict():
+    similarity_dict = defaultdict(list)
+
+    for user_phrase_doc in user_phrase_docs:
+        for bufo_phrase, bufo_doc in bufo_emoji_docs.items():
+            similarity = user_phrase_doc.similarity(bufo_doc)
+            similarity_dict[user_phrase_doc].append([bufo_phrase, similarity])
+
+    print(similarity_dict)
+    return similarity_dict
+
+def find_top_similarities(similarity_dict, top_n=3):
+    top_similarities = {}
+    for phrase, similarity_list in similarity_dict.items():
+        # Sort the similarity list in descending order by similarity value and get top N
+        top_similarities_for_phrase = sorted(similarity_list, key=lambda x: x[1], reverse=True)[:top_n]
+        top_similarities[phrase] = top_similarities_for_phrase
+    return top_similarities
+
+similarity_dict = generate_similarity_dict()
+top_similarities = find_top_similarities(similarity_dict)
+print("*******\n")
+for phrase, bufos in top_similarities.items():
+    print(f"For {phrase}, we recommend bufos:")
+    for bufo in bufos:
+        print(f"{bufo[0]}")
 
