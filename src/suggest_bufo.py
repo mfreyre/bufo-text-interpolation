@@ -12,8 +12,6 @@ for phrase in phrases:
     bufo_emoji_docs[phrase] = doc
 
 
-text = "I am so annoyed. I am shocked."
-
 user_phrases = ['I am so annoyed', 'I am shocked'];
 user_phrase_docs = [nlp(phrase) for phrase in user_phrases]
 for phrase in user_phrase_docs:
