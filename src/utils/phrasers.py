@@ -20,7 +20,5 @@ def get_bufo_phrases(nlp, filename):
         bufo_emoji_docs[emoji_name] = doc
     return bufo_emoji_docs
 
-def get_user_phrases(nlp):
-    user_phrases = ['I am so happy', 'I am happy']
-    user_phrase_docs = [nlp(phrase) for phrase in user_phrases]
-    return user_phrase_docs
+def get_user_phrases(nlp, phrases):
+    return [nlp(phrase) for phrase in phrases]
