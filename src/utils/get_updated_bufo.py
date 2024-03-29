@@ -18,9 +18,6 @@ def main():
     # Determine files in dir_one but not in dir_two
     files_to_copy = files_in_dir_one - files_in_dir_two
 
-    # Copy the files to the third directory
-    for file in files_to_copy:
-       shutil.copy(os.path.join(dir_one, file), dir_three)
 
 
 
@@ -28,3 +25,9 @@ def main():
 
 def get_filenames_in_directory(directory):
     return [file for file in os.listdir(directory) if os.path.isfile(os.path.join(directory, file))]
+
+
+
+def copy_files_into_dir(files_to_copy, dir_one, dir_two):
+    for file in files_to_copy:
+        shutil.copy(os.path.join(dir_one, file), dir_two)

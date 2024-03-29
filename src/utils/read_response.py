@@ -1,9 +1,9 @@
 import json
 
 
-def read_response():
+def read_response(filestr):
     # Path to your JSON file
-    file_path = 'src/utils/response.json'
+    file_path = f"src/utils/{filestr}.json"
 
     # Read the JSON file
     with open(file_path, 'r') as file:
